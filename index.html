@@ -3,49 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CloudDrive Uploader</title>
+  <title>CloudDrive Uploader - LIVE</title>
   <style>
+    /* ------------------- Typography & Structure ------------------- */
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      font-family: 'Inter', sans-serif;
+      /* Soft Gradient Background (Pastel Blue -> Violet) */
+      background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+      color: #333;
       height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       flex-direction: column;
+      margin: 0;
     }
     h2 {
-      color: #333;
+      color: #4A90E2; /* A modern blue */
+      font-weight: 700;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
     }
-    form {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+    /* ------------------- Card Styling (Neumorphism/Soft Glass) ------------------- */
+    .upload-card {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+      backdrop-filter: blur(10px); /* Glass effect */
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.5); /* Soft shadow and border */
       text-align: center;
+      width: 90%;
+      max-width: 450px;
     }
+
+    /* ------------------- Input & Button Styling ------------------- */
     input[type="file"] {
-      margin: 10px 0;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
+      margin: 20px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      background: #f8f8f8;
       cursor: pointer;
     }
+
+    button {
+      background: linear-gradient(to right, #4A90E2, #76A9FA); /* Modern button gradient */
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 4px 10px rgba(74, 144, 226, 0.4);
+    }
+
     button:hover {
-      background-color: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(74, 144, 226, 0.6);
+    }
+    
+    /* Style for the success message from the server */
+    h3 {
+        color: #4CAF50;
+        font-size: 1.5rem;
+    }
+    p a {
+        color: #4A90E2;
+        text-decoration: none;
+        font-weight: 500;
     }
   </style>
 </head>
 <body>
   <h2>🌤️ CloudDrive Uploader</h2>
-  <form action="/upload" method="POST" enctype="multipart/form-data">
-    <input type="file" name="file" required />
-    <br />
-    <button type="submit">Upload File</button>
-  </form>
+  <div class="upload-card">
+    <p style="color: #666; margin-bottom: 25px;">Upload a file to your secure Cloudinary storage.</p>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" required />
+      <button type="submit">Upload to Cloud</button>
+    </form>
+  </div>
 </body>
 </html>
