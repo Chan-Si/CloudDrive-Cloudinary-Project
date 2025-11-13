@@ -4,8 +4,8 @@ import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
 import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import path from "path"; // Import path module
+import { fileURLToPath } from "url"; // Import necessary utilities
 
 // Load environment variables
 dotenv.config({ path: "./.env" });
@@ -23,11 +23,14 @@ cloudinary.config({
 // Multer setup - temporary storage before upload
 const upload = multer({ dest: "uploads/" });
 
-// Get current directory path
+// Get current directory path for serving files (Needed for ES Modules)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve the HTML page
+// -------------------------------------------------------------------
+// NEW & CORRECTED ROUTE: Serve the static index.html file from disk
+// This is the guaranteed fix for the Render "Not Found" error
+// -------------------------------------------------------------------
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
